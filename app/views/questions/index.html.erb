@@ -1,13 +1,16 @@
-<h1>Questionss</h1>
+<h1>Questions</h1>
+
+
+Our tracker has <%= Question.public_count %> questions and counting!
 
 <ul>
   <% @questions.each do |question| %>
-    <li>
-      <%= question.title %>
-    </li>
+    <% unless question.archived? %>
+      <li>
+        <%= link_to question.title, question %>
+      </li>
+    <% end %>
   <% end %>
 </ul>
-
-
 
 <%= link_to "New Question", new_question_path %>
